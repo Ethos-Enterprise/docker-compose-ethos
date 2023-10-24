@@ -1,0 +1,61 @@
+services:
+  api-gateway:
+    image: jefferson661/gateway-app
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - mynetwork
+    depends_on:
+      - eureka-server
+  eureka-server:
+    image: jefferson661/eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - mynetwork
+  autenticacao-jwt:
+    image: jefferson661/autenticacao-jwt
+    container_name: autenticacao-jwt
+    ports:
+      - "8083:8083"
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres
+      - eureka-server
+  postgres:
+    image: postgres
+    container_name: postgressql
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5433:5432"
+    networks:
+      - mynetwork
+  postgres-empresa:
+    image: postgres
+    container_name: postgres-empresa
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5435:5432"
+    networks:
+      - mynetwork
+  empresa-api:
+    image: jefferson661/empresa-api
+    container_name: empresa-api
+    ports:
+      - "8082:8082"
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-empresa
+      - eureka-server
+networks:
+  mynetwork:
+    external: true
+volumes:
+  postgres-data:
