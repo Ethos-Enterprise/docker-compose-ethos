@@ -9,6 +9,8 @@ local-env-create:
 	docker exec postgres-newsletter psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/newsletter.sql
 	docker cp data/servico.sql postgres-servico:/var/lib/postgresql/data
 	docker exec postgres-servico psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/servico.sql
+	docker cp data/prestadora.sql postgres-prestadora:/var/lib/postgresql/data
+	docker exec postgres-prestadora psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/prestadora.sql
 
 local-env-destroy:
 	docker-compose -f stack.yaml down

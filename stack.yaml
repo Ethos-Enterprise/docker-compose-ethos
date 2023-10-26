@@ -92,6 +92,24 @@ services:
       - "5436:5432"
     networks:
       - mynetwork
+  postgres-prestadora:
+    image: postgres
+    container_name: postgres-prestadora
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5437:5432"
+    networks:
+      - mynetwork
+  prestadora-api:
+    image: jefferson661/prestadora-app
+    container_name: prestadora-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-prestadora
+      - eureka-server
 networks:
   mynetwork:
     external: true
