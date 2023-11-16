@@ -30,19 +30,13 @@ jobs:
         run: make local-env-create
 
 
-      - name: Deploy to Azure
-        env:
-          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: Configure Git
         run: |
-          # Add your Azure deployment commands here
-          # For example, using Azure CLI:
-          az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
-          az group create --name ethosResourceGroup --location eastus
-          az appservice plan create --name MyPlan --resource-group ethosResourceGroup --sku FREE
-          az webapp create --name EthosWebApp --resource-group ethosResourceGroup --plan MyPlan
-          az webapp deployment source config-local-git --name EthosWebApp --resource-group ethosResourceGroup --query url --output tsv
-          git remote add azure https://izy8Q~lzpao3.NcSbY31bu.mil~csgXgO54X6cf3@ethoswebapp.scm.azurewebsites.net/EthosWebApp.git
-          git push azure main
+          git config --global user.email "jefferson.silva@jazztech.com.br"
+          git config --global user.name "Jefferson"
+
+      - name: Deploy to Azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'EthosWebApp'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
