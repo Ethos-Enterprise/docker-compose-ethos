@@ -40,13 +40,13 @@ VALUES ('6ba7b813-9dad-11d1-80b4-00c04fd430c8', '123', '12345-678', 'Rua Princip
 
 -- Inserir dados na tabela EMPRESA
 INSERT INTO EMPRESA (id, razao_social, cnpj, telefone, email, senha, setor, qtd_funcionarios, assinante_newsletter, fk_endereco)
-VALUES ('6ba7b810-9dad-11d1-80b4-00c04fd430c1', 'Empresa A', '12345678901234', '1234567890', 'empresaA@email.com', 'senha123', 'Tecnologia', 50, true, '6ba7b810-9dad-11d1-80b4-00c04fd430c8');
+VALUES ('6ba7b810-9dad-11d1-80b4-00c04fd430c1', 'Empresa A', '12345678901234', '1234567890', 'empresaA@email.com', 'senha123', 'Tecnologia', 50, false, '6ba7b810-9dad-11d1-80b4-00c04fd430c8');
 
 INSERT INTO EMPRESA (id, razao_social, cnpj, telefone, email, senha, setor, qtd_funcionarios, assinante_newsletter, fk_endereco)
 VALUES ('6ba7b811-9dad-11d1-80b4-00c04fd430c2', 'Empresa B', '98765432104321', '9876543210', 'empresaB@email.com', 'senha456', 'Varejo', 100, false, '6ba7b811-9dad-11d1-80b4-00c04fd430c8');
 
 INSERT INTO EMPRESA (id, razao_social, cnpj, telefone, email, senha, setor, qtd_funcionarios, assinante_newsletter, fk_endereco)
-VALUES ('6ba7b812-9dad-11d1-80b4-00c04fd430c3', 'Empresa C', '55555555555555', '5555555555', 'empresaC@email.com', 'senha789', 'Saúde', 25, true, '6ba7b812-9dad-11d1-80b4-00c04fd430c8');
+VALUES ('6ba7b812-9dad-11d1-80b4-00c04fd430c3', 'Empresa C', '55555555555555', '5555555555', 'empresaC@email.com', 'senha789', 'Saúde', 25, false, '6ba7b812-9dad-11d1-80b4-00c04fd430c8');
 
 INSERT INTO EMPRESA (id, razao_social, cnpj, telefone, email, senha, setor, qtd_funcionarios, assinante_newsletter, fk_endereco)
 VALUES ('6ba7b813-9dad-11d1-80b4-00c04fd430c4', 'Empresa D', '77777777777777', '7777777777', 'empresaD@email.com', 'senhaabc', 'Educação', 75, false, '6ba7b813-9dad-11d1-80b4-00c04fd430c8');
