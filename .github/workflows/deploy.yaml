@@ -43,5 +43,5 @@ jobs:
           az appservice plan create --name MyPlan --resource-group ethosResourceGroup --sku FREE
           az webapp create --name EthosWebApp --resource-group ethosResourceGroup --plan MyPlan
           az webapp deployment source config-local-git --name EthosWebApp --resource-group ethosResourceGroup --query url --output tsv
-          git remote add azure https://ethoswebapp.scm.azurewebsites.net/EthosWebApp.git
+          git remote add azure https://jefferson.silva@sptech.school@ethoswebapp.scm.azurewebsites.net/EthosWebApp.git
           git push azure main
