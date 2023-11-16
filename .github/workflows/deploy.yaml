@@ -29,5 +29,19 @@ jobs:
         run: make local-env-create
 
 
-      - name: Clean up
-        run: make local-env-destroy
+      - name: Deploy to Azure
+        env:
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        run: |
+          # Add your Azure deployment commands here
+          # For example, using Azure CLI:
+          az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
+          az group create --name ethosResourceGroup --location eastus
+          az appservice plan create --name MyPlan --resource-group ethosResourceGroup --sku FREE
+          az webapp create --name MyWebApp --resource-group ethosResourceGroup --plan MyPlan
+          az webapp deployment source config-local-git --name MyWebApp --resource-group ethosResourceGroup --query url --output tsv
+          git remote add azure $(url)
+          git push azure main
