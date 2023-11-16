@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  configure-docker:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +29,9 @@ jobs:
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         run: make local-env-create
 
-
+  deploy:
+      runs-on: ubuntu-latest
+      steps:
       - name: Configure Git
         run: |
           git config --global user.email "jefferson.silva@jazztech.com.br"
