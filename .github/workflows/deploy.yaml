@@ -20,7 +20,7 @@ jobs:
         run: docker-compose -f stack.yaml up -d
 
       - name: Connect to PostgreSQL
-        run: docker exec localhost psql -h localhost -U admin -d postgres
+        run: docker exec postgressql psql -h localhost -U admin -d postgres
 
       - name: Run Makefile
         env:
