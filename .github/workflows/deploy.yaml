@@ -23,7 +23,6 @@ jobs:
       - name: View container logs
         run: |
           docker logs api-gateway
-          docker logs eureka-server
           docker logs autenticacao-jwt
           docker logs empresa-api
           docker logs newsletter-api
