@@ -3,7 +3,7 @@ local-env-create:
 	docker-compose -f stack.yaml up -d
 	sleep 3
 	docker cp data/user.sql postgressql:/var/lib/postgresql/data
-	docker exec postgressql psql -h postgressql -U admin --password senha123 -d postgres -a -f ./var/lib/postgresql/data/user.sql
+	docker exec postgressql psql -h postgressql -U admin -d postgres -a -W senha123 -f ./var/lib/postgresql/data/user.sql
 	docker cp data/empresa.sql postgres-empresa:/var/lib/postgresql/data
 	docker exec postgres-empresa psql -h postgres-empresa -U admin -d postgres -a -f ./var/lib/postgresql/data/empresa.sql
 	docker cp data/newsletter.sql postgres-newsletter:/var/lib/postgresql/data
