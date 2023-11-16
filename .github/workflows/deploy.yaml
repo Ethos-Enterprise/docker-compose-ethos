@@ -19,7 +19,16 @@ jobs:
 
       - name: Set up Docker Compose
         run: docker-compose -f stack.yaml up -d
-
+        
+      - name: View container logs
+        run: |
+          docker logs api-gateway
+          docker logs eureka-server
+          docker logs autenticacao-jwt
+          docker logs empresa-api
+          docker logs newsletter-api
+          docker logs servico-api
+          docker logs prestadora-api
 
       - name: Run Makefile
         env:
