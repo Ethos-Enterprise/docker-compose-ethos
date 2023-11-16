@@ -3,7 +3,7 @@ services:
     image: jefferson661/gateway-app
     container_name: api-gateway
     ports:
-      - "8080:8080"
+      - "80:80"
     networks:
       - mynetwork
     depends_on:
