@@ -13,6 +13,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Create network
+        run: docker network create -d bridge --subnet=172.23.0.1/16 --gateway=172.23.0.1 mynetwork
+
       - name: Set up Docker Compose
         run: docker-compose -f stack.yaml up -d
 
@@ -23,6 +26,7 @@ jobs:
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         run: make local-env-create
+
       - name: Connect to PostgreSQL
         run: docker exec postgressql psql -h localhost -U admin -d postgres
 
