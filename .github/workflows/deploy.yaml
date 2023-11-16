@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        persist-credentials: true
+
 
       - name: Create network
         run: docker network create -d bridge --subnet=172.23.0.1/16 --gateway=172.23.0.1 mynetwork
