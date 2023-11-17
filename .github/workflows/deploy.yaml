@@ -23,11 +23,11 @@ jobs:
       - name: View container logs
         run: |
           docker logs api-gateway
-          docker logs autenticacao-jwt
-          docker logs empresa-api
-          docker logs newsletter-api
-          docker logs servico-api
-          docker logs prestadora-api
+#          docker logs autenticacao-jwt
+#          docker logs empresa-api
+#          docker logs newsletter-api
+#          docker logs servico-api
+#          docker logs prestadora-api
 
       - name: Run Makefile
         env:
