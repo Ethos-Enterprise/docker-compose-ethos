@@ -112,6 +112,6 @@ services:
       - eureka-server
 networks:
   mynetwork:
-    external: false
+    external: true
 volumes:
   postgres-data:
