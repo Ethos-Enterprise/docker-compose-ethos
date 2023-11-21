@@ -1,6 +1,6 @@
 local-env-create:
 	(docker network inspect mynetwork >/dev/null 2>&1 || docker network create -d bridge --subnet=172.23.0.1/16 --gateway=172.23.0.1 mynetwork)
-	docker-compose -f stack.yml up -d
+	docker-compose -f stack.yaml up -d
 	sleep 3
 	docker cp data/user.sql postgressql:/var/lib/postgresql/data
 	docker exec postgressql psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/user.sql
@@ -14,4 +14,4 @@ local-env-create:
 	docker exec postgres-prestadora psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/prestadora.sql
 
 local-env-destroy:
-	docker-compose -f stack.yml down
+	docker-compose -f stack.yaml down
