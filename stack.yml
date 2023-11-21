@@ -1,0 +1,117 @@
+services:
+  api-gateway:
+    image: jefferson661/gateway-app
+    container_name: api-gateway
+    ports:
+      - "80:80"
+    networks:
+      - mynetwork
+    depends_on:
+      - eureka-server
+      - autenticacao-jwt
+      - newsletter-api
+      - empresa-api
+  eureka-server:
+    image: jefferson661/eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - mynetwork
+  autenticacao-jwt:
+    image: jefferson661/autenticacao-jwt
+    container_name: autenticacao-jwt
+    networks:
+      - mynetwork
+    ports:
+      - "8083:8083"
+    depends_on:
+      - postgres
+      - eureka-server
+  postgres:
+    image: postgres
+    container_name: postgressql
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5433:5432"
+    networks:
+      - mynetwork
+  postgres-empresa:
+    image: postgres
+    container_name: postgres-empresa
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5435:5432"
+    networks:
+      - mynetwork
+  empresa-api:
+    image: jefferson661/empresa-api
+    container_name: empresa-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-empresa
+      - eureka-server
+  newsletter-api:
+    image: jefferson661/newsletter-app
+    container_name: newsletter-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-newsletter
+      - eureka-server
+      - empresa-api
+  postgres-newsletter:
+    image: postgres
+    container_name: postgres-newsletter
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5434:5432"
+    networks:
+      - mynetwork
+  servico-api:
+    image: jefferson661/servico-app
+    container_name: servico-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-servico
+      - eureka-server
+  postgres-servico:
+    image: postgres
+    container_name: postgres-servico
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5436:5432"
+    networks:
+      - mynetwork
+  postgres-prestadora:
+    image: postgres
+    container_name: postgres-prestadora
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5437:5432"
+    networks:
+      - mynetwork
+  prestadora-api:
+    image: jefferson661/prestadora-app
+    container_name: prestadora-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-prestadora
+      - eureka-server
+networks:
+  mynetwork:
+    external: false
+volumes:
+  postgres-data:
