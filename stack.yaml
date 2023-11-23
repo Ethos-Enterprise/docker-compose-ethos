@@ -102,6 +102,26 @@ services:
       - "5437:5432"
     networks:
       - mynetwork
+  postgres-avaliacao:
+    image: postgres
+    container_name: postgres-avaliacao
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5438:5432"
+    networks:
+      - mynetwork
+  postgres-portfolio:
+    image: postgres
+    container_name: postgres-portfolio
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5439:5432"
+    networks:
+      - mynetwork
   prestadora-api:
     image: jefferson661/prestadora-app
     container_name: prestadora-api
@@ -109,6 +129,22 @@ services:
       - mynetwork
     depends_on:
       - postgres-prestadora
+      - eureka-server
+  avaliacao-api:
+    image: vitorxp/avaliacao-app
+    container_name: avaliacao-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-avaliacao
+      - eureka-server
+  portfolio-api:
+    image: vitorxp/portfolio-app
+    container_name: portfolio-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-portfolio
       - eureka-server
 networks:
   mynetwork:

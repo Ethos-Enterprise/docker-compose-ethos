@@ -1,5 +1,5 @@
 CREATE TABLE SERVICO (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY,
     nome VARCHAR(255),
     descricao TEXT,
     valor DOUBLE PRECISION,
