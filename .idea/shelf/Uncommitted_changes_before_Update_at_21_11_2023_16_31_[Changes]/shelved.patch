@@ -1,0 +1,138 @@
+Index: data/servico.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>CREATE TABLE SERVICO (\r\n    id SERIAL PRIMARY KEY,\r\n    nome VARCHAR(255),\r\n    descricao TEXT,\r\n    valor DOUBLE PRECISION,\r\n    area_atuacao_esg VARCHAR(255),\r\n    fk_prestadora_servico UUID\r\n);
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data/servico.sql b/data/servico.sql
+--- a/data/servico.sql	(revision 910c77a43c9c1fd9bddcdbddc61d3b459581035e)
++++ b/data/servico.sql	(date 1699572560242)
+@@ -1,5 +1,5 @@
+ CREATE TABLE SERVICO (
+-    id SERIAL PRIMARY KEY,
++    id UUID PRIMARY KEY,
+     nome VARCHAR(255),
+     descricao TEXT,
+     valor DOUBLE PRECISION,
+Index: Makefile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>local-env-create:\r\n\tdocker-compose -f stack.yaml up -d\r\n\tsleep 3\r\n\tdocker cp data/user.sql postgressql:/var/lib/postgresql/data\r\n\tdocker exec postgressql psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/user.sql\r\n\tdocker cp data/empresa.sql postgres-empresa:/var/lib/postgresql/data\r\n\tdocker exec postgres-empresa psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/empresa.sql\r\n\tdocker cp data/newsletter.sql postgres-newsletter:/var/lib/postgresql/data\r\n\tdocker exec postgres-newsletter psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/newsletter.sql\r\n\tdocker cp data/servico.sql postgres-servico:/var/lib/postgresql/data\r\n\tdocker exec postgres-servico psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/servico.sql\r\n\tdocker cp data/prestadora.sql postgres-prestadora:/var/lib/postgresql/data\r\n\tdocker exec postgres-prestadora psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/prestadora.sql\r\n\r\nlocal-env-destroy:\r\n\tdocker-compose -f stack.yaml down
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Makefile b/Makefile
+--- a/Makefile	(revision 910c77a43c9c1fd9bddcdbddc61d3b459581035e)
++++ b/Makefile	(date 1699572560312)
+@@ -11,6 +11,10 @@
+ 	docker exec postgres-servico psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/servico.sql
+ 	docker cp data/prestadora.sql postgres-prestadora:/var/lib/postgresql/data
+ 	docker exec postgres-prestadora psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/prestadora.sql
++	docker cp data/avaliacao.sql postgres-avaliacao:/var/lib/postgresql/data
++	docker exec postgres-avaliacao psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/avaliacao.sql
++    docker cp data/portfolio.sql postgres-portfolio:/var/lib/postgresql/data
++	docker exec postgres-portfolio psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/portfolio.sql
+ 
+ local-env-destroy:
+ 	docker-compose -f stack.yaml down
+\ No newline at end of file
+Index: stack.yaml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>services:\r\n  api-gateway:\r\n    image: jefferson661/gateway-app\r\n    container_name: api-gateway\r\n    ports:\r\n      - \"8080:8080\"\r\n    networks:\r\n      - mynetwork\r\n    depends_on:\r\n      - eureka-server\r\n      - autenticacao-jwt\r\n      - newsletter-api\r\n      - empresa-api\r\n  eureka-server:\r\n    image: jefferson661/eureka-server\r\n    ports:\r\n      - \"8761:8761\"\r\n    networks:\r\n      - mynetwork\r\n  autenticacao-jwt:\r\n    image: jefferson661/autenticacao-jwt\r\n    container_name: autenticacao-jwt\r\n    networks:\r\n      - mynetwork\r\n    ports:\r\n      - \"8083:8083\"\r\n    depends_on:\r\n      - postgres\r\n      - eureka-server\r\n  postgres:\r\n    image: postgres\r\n    container_name: postgressql\r\n    environment:\r\n      POSTGRES_USER: admin\r\n      POSTGRES_PASSWORD: senha123\r\n    ports:\r\n      - \"5433:5432\"\r\n    networks:\r\n      - mynetwork\r\n  postgres-empresa:\r\n    image: postgres\r\n    container_name: postgres-empresa\r\n    environment:\r\n      POSTGRES_USER: admin\r\n      POSTGRES_PASSWORD: senha123\r\n    ports:\r\n      - \"5435:5432\"\r\n    networks:\r\n      - mynetwork\r\n  empresa-api:\r\n    image: jefferson661/empresa-api\r\n    container_name: empresa-api\r\n    networks:\r\n      - mynetwork\r\n    depends_on:\r\n      - postgres-empresa\r\n      - eureka-server\r\n  newsletter-api:\r\n    image: jefferson661/newsletter-app\r\n    container_name: newsletter-api\r\n    networks:\r\n      - mynetwork\r\n    depends_on:\r\n      - postgres-newsletter\r\n      - eureka-server\r\n      - empresa-api\r\n  postgres-newsletter:\r\n    image: postgres\r\n    container_name: postgres-newsletter\r\n    environment:\r\n      POSTGRES_USER: admin\r\n      POSTGRES_PASSWORD: senha123\r\n    ports:\r\n      - \"5434:5432\"\r\n    networks:\r\n      - mynetwork\r\n  servico-api:\r\n    image: jefferson661/servico-app\r\n    container_name: servico-api\r\n    networks:\r\n      - mynetwork\r\n    depends_on:\r\n      - postgres-servico\r\n      - eureka-server\r\n  postgres-servico:\r\n    image: postgres\r\n    container_name: postgres-servico\r\n    environment:\r\n      POSTGRES_USER: admin\r\n      POSTGRES_PASSWORD: senha123\r\n    ports:\r\n      - \"5436:5432\"\r\n    networks:\r\n      - mynetwork\r\n  postgres-prestadora:\r\n    image: postgres\r\n    container_name: postgres-prestadora\r\n    environment:\r\n      POSTGRES_USER: admin\r\n      POSTGRES_PASSWORD: senha123\r\n    ports:\r\n      - \"5437:5432\"\r\n    networks:\r\n      - mynetwork\r\n  prestadora-api:\r\n    image: jefferson661/prestadora-app\r\n    container_name: prestadora-api\r\n    networks:\r\n      - mynetwork\r\n    depends_on:\r\n      - postgres-prestadora\r\n      - eureka-server\r\nnetworks:\r\n  mynetwork:\r\n    external: true\r\nvolumes:\r\n  postgres-data:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/stack.yaml b/stack.yaml
+--- a/stack.yaml	(revision 910c77a43c9c1fd9bddcdbddc61d3b459581035e)
++++ b/stack.yaml	(date 1699573681020)
+@@ -102,6 +102,26 @@
+       - "5437:5432"
+     networks:
+       - mynetwork
++  postgres-avaliacao:
++    image: postgres
++    container_name: postgres-avaliacao
++    environment:
++      POSTGRES_USER: admin
++      POSTGRES_PASSWORD: senha123
++    ports:
++      - "5438:5432"
++    networks:
++      - mynetwork
++  postgres-portfolio:
++    image: postgres
++    container_name: postgres-portfolio
++    environment:
++      POSTGRES_USER: admin
++      POSTGRES_PASSWORD: senha123
++    ports:
++      - "5439:5432"
++    networks:
++      - mynetwork
+   prestadora-api:
+     image: jefferson661/prestadora-app
+     container_name: prestadora-api
+@@ -109,6 +129,22 @@
+       - mynetwork
+     depends_on:
+       - postgres-prestadora
++      - eureka-server
++  avaliacao-api:
++    image: vitorxp/avaliacao-app
++    container_name: avaliacao-api
++    networks:
++      - mynetwork
++    depends_on:
++      - postgres-avaliacao
++      - eureka-server
++  portfolio-api:
++    image: vitorxp/portfolio-app
++    container_name: portfolio-api
++    networks:
++      - mynetwork
++    depends_on:
++      - postgres-portfolio
+       - eureka-server
+ networks:
+   mynetwork:
+Index: data/portfolio.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data/portfolio.sql b/data/portfolio.sql
+new file mode 100644
+--- /dev/null	(date 1699572560216)
++++ b/data/portfolio.sql	(date 1699572560216)
+@@ -0,0 +1,10 @@
++CREATE TABLE IF NOT EXISTS Portfolio (
++    id uuid PRIMARY KEY,
++    url_imagem_perfil TEXT,
++    url_backgroud_perfil TEXT,
++    descricao_empresa VARCHAR(300),
++    sobre_empresa VARCHAR(1000),
++    link_website_empresa VARCHAR(300),
++    data_empresa_certificado TIMESTAMP,
++    fk_prestadora_servico UUID
++    );
+Index: data/avaliacao.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/data/avaliacao.sql b/data/avaliacao.sql
+new file mode 100644
+--- /dev/null	(date 1699572560276)
++++ b/data/avaliacao.sql	(date 1699572560276)
+@@ -0,0 +1,8 @@
++CREATE TABLE IF NOT EXISTS Avaliacao (
++    id UUID PRIMARY KEY,
++    comentario VARCHAR(250),
++    nota INT,
++    data TIMESTAMP,
++    fk_empresa UUID,
++    fk_servico UUID
++    );
+\ No newline at end of file
