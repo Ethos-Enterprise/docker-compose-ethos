@@ -1,5 +1,7 @@
 local-env-create:
 	(docker network inspect mynetwork >/dev/null 2>&1 || docker network create -d bridge --subnet=172.23.0.1/16 --gateway=172.23.0.1 mynetwork)
+	docker login -u jefferson661 -p dckr_pat_KnO1-TvvrpyZTTGoVwo2GArNYWY
+	docker-compose -f stack.yaml pull
 	docker-compose -f stack.yaml up -d
 	sleep 3
 	docker cp data/user.sql postgressql:/var/lib/postgresql/data
