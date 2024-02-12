@@ -122,6 +122,17 @@ services:
       - "5439:5432"
     networks:
       - mynetwork
+  postgres-pergunta:
+    image: postgres
+    container_name: postgres-pergunta
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5440:5432"
+    networks:
+      - mynetwork
+
   prestadora-api:
     image: jefferson661/prestadora-app
     container_name: prestadora-api
