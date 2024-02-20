@@ -11,12 +11,15 @@ local-env-create:
 	docker cp data/newsletter.sql postgres-newsletter:/var/lib/postgresql/data
 	docker exec postgres-newsletter psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/newsletter.sql
 	docker cp data/servico.sql postgres-servico:/var/lib/postgresql/data
-		docker exec postgres-servico psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/servico.sql
+	docker exec postgres-servico psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/servico.sql
 	docker cp data/prestadora.sql postgres-prestadora:/var/lib/postgresql/data
 	docker exec postgres-prestadora psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/prestadora.sql
 	docker cp data/avaliacao.sql postgres-avaliacao:/var/lib/postgresql/data
 	docker exec postgres-avaliacao psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/avaliacao.sql
-    docker cp data/portfolio.sql postgres-portfolio:/var/lib/postgresql/data
+	docker cp data/portfolio.sql postgres-portfolio:/var/lib/postgresql/data
 	docker exec postgres-portfolio psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/portfolio.sql
+	docker cp data/pergunta.sql postgres-pergunta:/var/lib/postgresql/data
+	docker exec postgres-pergunta psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/pergunta.sql
+
 local-env-destroy:
 	docker-compose -f stack.yaml down
