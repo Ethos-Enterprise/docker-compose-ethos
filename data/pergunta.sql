@@ -11,10 +11,6 @@ CREATE TABLE Pergunta (
   PRIMARY KEY (id)
 );
 
-INSERT INTO Empresa (id, razao_social, cnpj, telefone, email, senha, qtd_funcionario, setor, assinante_newsletter, fk_endereco, fk_plano, fk_interacoes)
-VALUES ('1', 'Empresa de Prueba', '12345678901234', '1122334455', 'correo@empresa.com', 'contraseña', '100', 'Tecnología', NULL, '1', '1', '1');
-
-
 INSERT INTO Pergunta (id, titulo, alternativaA, alternativaB, alternativaC, alternativaD, alternativaE, area_esg, tema) VALUES
 (1, 'Em relação à gestão de resíduos sólidos:', 'A empresa não possui políticas ou práticas documentadas para lidar com resíduos', 'A empresa tem políticas, mas raramente as implementa', 'A empresa implementa políticas de maneira consistente', 'A empresa tem um bom controle e recicla resíduos regularmente', 'A empresa possui um sistema eficiente de gestão de resíduos', 'ambiental', 'Gestão de Resíduos Sólidos'),
 (2, 'Quanto ao uso de recursos naturais:', 'A empresa não monitora o uso de recursos naturais', 'A empresa faz monitoramento, mas não adota medidas para reduzir o consumo', 'A empresa adota medidas esporádicas para reduzir o consumo', 'A empresa possui políticas efetivas de redução de consumo de recursos naturais', 'A empresa é líder na conservação de recursos naturais', 'ambiental', 'Uso de Recursos Naturais'),
