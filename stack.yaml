@@ -172,18 +172,6 @@ services:
       - postgres-portfolio
       - eureka-server
 
-  keycloak:
-    image: quay.io/keycloak/keycloak:22.0.5
-    container_name: keycloak
-    ports:
-      - "8080:8080"
-    networks:
-      - mynetwork
-    environment:
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
-    command: [ "start-dev" ]
-
 networks:
   mynetwork:
     external: true
