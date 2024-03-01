@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="120d1d01-479d-4d42-b97a-2b78c7e9e301" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/meta.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_11_2023_16_31_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_11_2023_16_31__Changes_.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/interacao.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/meta.sql" beforeDir="false" afterPath="$PROJECT_DIR$/data/meta.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stack.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/stack.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

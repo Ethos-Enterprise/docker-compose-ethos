@@ -142,6 +142,16 @@ services:
       - "5441:5432"
     networks:
       - mynetwork
+  postgres-interacao:
+    image: postgres
+    container_name: postgres-interacao
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5442:5432"
+    networks:
+      - mynetwork
 
   prestadora-api:
     image: jefferson661/prestadora-app

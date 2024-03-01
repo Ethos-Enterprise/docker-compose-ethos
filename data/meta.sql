@@ -1,10 +1,10 @@
 CREATE TABLE META (
-                      id UUID PRIMARY KEY,
-                      pilarEsg VARCHAR(100),
-                      descricao VARCHAR(100),
-                      dataInicio DATE,
-                      dataFim DATE,
-                      fk_empresa UUID
+    id UUID PRIMARY KEY,
+    pilarEsg VARCHAR(100),
+    descricao VARCHAR(100),
+    dataInicio DATE,
+    dataFim DATE,
+    fk_empresa UUID
 );
 
 INSERT INTO META (id, pilarEsg, descricao, dataInicio, dataFim, fk_empresa)
