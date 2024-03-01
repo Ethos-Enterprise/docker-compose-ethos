@@ -3,10 +3,9 @@ services:
     image: jefferson661/gateway-app
     container_name: api-gateway
     ports:
-      - "8081:8081"
+      - "8080:8080"
     networks:
       - mynetwork
-
     depends_on:
       - eureka-server
       - autenticacao-jwt
@@ -18,7 +17,6 @@ services:
       - "8761:8761"
     networks:
       - mynetwork
-
   autenticacao-jwt:
     image: jefferson661/autenticacao-jwt
     container_name: autenticacao-jwt
@@ -29,7 +27,6 @@ services:
     depends_on:
       - postgres
       - eureka-server
-
   postgres:
     image: postgres
     container_name: postgressql
@@ -40,7 +37,6 @@ services:
       - "5433:5432"
     networks:
       - mynetwork
-
   postgres-empresa:
     image: postgres
     container_name: postgres-empresa
@@ -51,7 +47,6 @@ services:
       - "5435:5432"
     networks:
       - mynetwork
-
   empresa-api:
     image: jefferson661/empresa-api
     container_name: empresa-api
@@ -60,7 +55,6 @@ services:
     depends_on:
       - postgres-empresa
       - eureka-server
-
   newsletter-api:
     image: jefferson661/newsletter-app
     container_name: newsletter-api
@@ -70,7 +64,6 @@ services:
       - postgres-newsletter
       - eureka-server
       - empresa-api
-
   postgres-newsletter:
     image: postgres
     container_name: postgres-newsletter
@@ -81,7 +74,6 @@ services:
       - "5434:5432"
     networks:
       - mynetwork
-
   servico-api:
     image: jefferson661/servico-app
     container_name: servico-api
@@ -90,7 +82,6 @@ services:
     depends_on:
       - postgres-servico
       - eureka-server
-
   postgres-servico:
     image: postgres
     container_name: postgres-servico
@@ -101,7 +92,6 @@ services:
       - "5436:5432"
     networks:
       - mynetwork
-
   postgres-prestadora:
     image: postgres
     container_name: postgres-prestadora
@@ -112,7 +102,6 @@ services:
       - "5437:5432"
     networks:
       - mynetwork
-
   postgres-avaliacao:
     image: postgres
     container_name: postgres-avaliacao
@@ -123,7 +112,6 @@ services:
       - "5438:5432"
     networks:
       - mynetwork
-
   postgres-portfolio:
     image: postgres
     container_name: postgres-portfolio
@@ -144,6 +132,16 @@ services:
       - "5440:5432"
     networks:
       - mynetwork
+  postgres-meta:
+    image: postgres
+    container_name: postgres-meta
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+    ports:
+      - "5441:5432"
+    networks:
+      - mynetwork
 
   prestadora-api:
     image: jefferson661/prestadora-app
@@ -153,7 +151,6 @@ services:
     depends_on:
       - postgres-prestadora
       - eureka-server
-
   avaliacao-api:
     image: vitorxp/avaliacao-app
     container_name: avaliacao-api
@@ -162,7 +159,6 @@ services:
     depends_on:
       - postgres-avaliacao
       - eureka-server
-
   portfolio-api:
     image: vitorxp/portfolio-app
     container_name: portfolio-api
@@ -171,7 +167,6 @@ services:
     depends_on:
       - postgres-portfolio
       - eureka-server
-
 networks:
   mynetwork:
     external: true
