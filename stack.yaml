@@ -89,7 +89,7 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: senha123
     ports:
-      - "5436:5432"
+      - "5436:8089"
     networks:
       - mynetwork
   postgres-prestadora:
