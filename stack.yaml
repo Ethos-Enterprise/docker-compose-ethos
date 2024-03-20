@@ -8,7 +8,6 @@ services:
       - mynetwork
     depends_on:
       - eureka-server
-      - autenticacao-jwt
       - newsletter-api
       - empresa-api
   eureka-server:
@@ -17,16 +16,6 @@ services:
       - "8761:8761"
     networks:
       - mynetwork
-  autenticacao-jwt:
-    image: jefferson661/autenticacao-jwt
-    container_name: autenticacao-jwt
-    networks:
-      - mynetwork
-    ports:
-      - "8083:8083"
-    depends_on:
-      - postgres
-      - eureka-server
   postgres:
     image: postgres
     container_name: postgressql
