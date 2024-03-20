@@ -100,7 +100,6 @@ services:
     ports:
       - "5438:5432"
     networks:
-      - mynetwork
   postgres-portfolio:
     image: postgres
     container_name: postgres-portfolio
@@ -131,6 +130,14 @@ services:
       - "5441:5432"
     networks:
       - mynetwork
+  interacao-api:
+    image: jefferson661/interacao-app
+    container_name: interacao-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-interacao
+      - eureka-server
   postgres-interacao:
     image: postgres
     container_name: postgres-interacao
@@ -142,30 +149,8 @@ services:
     networks:
       - mynetwork
 
-  prestadora-api:
-    image: jefferson661/prestadora-app
-    container_name: prestadora-api
-    networks:
-      - mynetwork
-    depends_on:
-      - postgres-prestadora
-      - eureka-server
-  avaliacao-api:
-    image: vitorxp/avaliacao-app
-    container_name: avaliacao-api
-    networks:
-      - mynetwork
-    depends_on:
-      - postgres-avaliacao
-      - eureka-server
-  portfolio-api:
-    image: vitorxp/portfolio-app
-    container_name: portfolio-api
-    networks:
-      - mynetwork
-    depends_on:
-      - postgres-portfolio
-      - eureka-server
+
+
 networks:
   mynetwork:
     external: true
