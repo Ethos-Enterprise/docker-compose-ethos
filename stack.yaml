@@ -100,6 +100,7 @@ services:
     ports:
       - "5438:5432"
     networks:
+      - mynetwork
   postgres-portfolio:
     image: postgres
     container_name: postgres-portfolio
