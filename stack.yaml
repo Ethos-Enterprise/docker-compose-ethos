@@ -3,7 +3,7 @@ services:
     image: jefferson661/gateway-app
     container_name: api-gateway
     ports:
-      - "8080:8080"
+      - "8081:8081"
     networks:
       - mynetwork
     depends_on:
@@ -131,6 +131,14 @@ services:
       - "5441:5432"
     networks:
       - mynetwork
+  meta-api:
+    image: jefferson661/meta-api
+    container_name: meta-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-meta
+      - eureka-server
   interacao-api:
     image: jefferson661/interacao-app
     container_name: interacao-api
@@ -149,8 +157,6 @@ services:
       - "5442:5432"
     networks:
       - mynetwork
-
-
 
 networks:
   mynetwork:
