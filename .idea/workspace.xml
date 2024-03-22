@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="120d1d01-479d-4d42-b97a-2b78c7e9e301" name="Changes" comment="Fix: ajustando banco de avaliacao">
+    <list default="true" id="120d1d01-479d-4d42-b97a-2b78c7e9e301" name="Changes" comment="Fix: tabela de meta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stack.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/stack.yaml" afterDir="false" />
     </list>
@@ -127,7 +127,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710974692542</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Feat: adicionando api de meta">
+      <option name="closed" value="true" />
+      <created>1710982757150</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1710982757150</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fix: tabela de meta">
+      <option name="closed" value="true" />
+      <created>1710984451320</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1710984451320</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +154,8 @@
     <MESSAGE value="Fix: Corrigindo tabela de portfolio" />
     <MESSAGE value="Feat: add api de interacao" />
     <MESSAGE value="Fix: ajustando banco de avaliacao" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix: ajustando banco de avaliacao" />
+    <MESSAGE value="Feat: adicionando api de meta" />
+    <MESSAGE value="Fix: tabela de meta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: tabela de meta" />
   </component>
 </project>

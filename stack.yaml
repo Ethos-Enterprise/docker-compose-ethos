@@ -157,6 +157,15 @@ services:
       - "5442:5432"
     networks:
       - mynetwork
+  questionario-api:
+    image: jefferson661/questionario-api
+    container_name: questionario-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-pergunta
+      - eureka-server
+
 
 networks:
   mynetwork:
