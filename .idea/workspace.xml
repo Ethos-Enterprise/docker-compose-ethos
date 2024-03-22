@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="120d1d01-479d-4d42-b97a-2b78c7e9e301" name="Changes" comment="Fix: tabela de meta">
+    <list default="true" id="120d1d01-479d-4d42-b97a-2b78c7e9e301" name="Changes" comment="Feat: api questionario">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stack.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/stack.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/pergunta.sql" beforeDir="false" afterPath="$PROJECT_DIR$/data/pergunta.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710984451320</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Feat: api questionario">
+      <option name="closed" value="true" />
+      <created>1711068350049</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711068350049</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +164,7 @@
     <MESSAGE value="Fix: ajustando banco de avaliacao" />
     <MESSAGE value="Feat: adicionando api de meta" />
     <MESSAGE value="Fix: tabela de meta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix: tabela de meta" />
+    <MESSAGE value="Feat: api questionario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: api questionario" />
   </component>
 </project>
