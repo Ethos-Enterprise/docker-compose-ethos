@@ -78,7 +78,7 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: senha123
     ports:
-      - "5436:8089"
+      - "5436:5432"
     networks:
       - mynetwork
   postgres-prestadora:
@@ -92,7 +92,7 @@ services:
     networks:
       - mynetwork
   avaliacao-api:
-    image: jefferson661/avaliacao-app
+    image: vitorxp/avaliacao-app
     container_name: avaliacao-api
     networks:
       - mynetwork
