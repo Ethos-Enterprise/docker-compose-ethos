@@ -11,12 +11,12 @@ CREATE TABLE Pergunta (
   PRIMARY KEY (id)
 );
 
-create table Questionario(
+create table questionario(
   id UUID NOT NULL,
   porcentagem_ambiental INT NULL,
   porcentagem_social INT NULL,
   porcentagem_governanca INT NULL,
-  fk_empresa UUID NOT NULL,
+  fk_empresa UUID,
   PRIMARY KEY (id)
 );
 
