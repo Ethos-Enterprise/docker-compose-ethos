@@ -91,6 +91,14 @@ services:
       - "5437:5432"
     networks:
       - mynetwork
+  avaliacao-api:
+    image: jefferson661/avaliacao-app
+    container_name: avaliacao-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-avaliacao
+      - eureka-server
   postgres-avaliacao:
     image: postgres
     container_name: postgres-avaliacao
