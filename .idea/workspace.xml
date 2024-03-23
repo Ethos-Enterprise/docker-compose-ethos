@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="120d1d01-479d-4d42-b97a-2b78c7e9e301" name="Changes" comment="Feat: api questionario">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/pergunta.sql" beforeDir="false" afterPath="$PROJECT_DIR$/data/pergunta.sql" afterDir="false" />
-    </list>
+    <list default="true" id="120d1d01-479d-4d42-b97a-2b78c7e9e301" name="Changes" comment="Feat: api questionario" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -181,6 +181,14 @@ services:
     depends_on:
       - postgres-pergunta
       - eureka-server
+  prestadora-api:
+    image: jefferson661/prestadora-app
+    container_name: prestadora-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-prestadora
+      - eureka-server
 
 
 networks:
