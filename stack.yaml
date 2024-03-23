@@ -119,6 +119,14 @@ services:
       - "5439:5432"
     networks:
       - mynetwork
+  portfolio-api:
+    image: vitorxp/portfolio-app
+    container_name: portfolio-api
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-portfolio
+      - eureka-server
   postgres-pergunta:
     image: postgres
     container_name: postgres-pergunta
