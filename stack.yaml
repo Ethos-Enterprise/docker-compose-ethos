@@ -16,6 +16,7 @@ services:
       - "8761:8761"
     networks:
       - mynetwork
+
   postgres:
     image: postgres
     container_name: postgressql
@@ -23,149 +24,64 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: senha123
     ports:
-      - "5433:5432"
+      - "5432:5432"
     networks:
       - mynetwork
-  postgres-empresa:
-    image: postgres
-    container_name: postgres-empresa
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: senha123
-    ports:
-      - "5435:5432"
-    networks:
-      - mynetwork
+
   empresa-api:
     image: jefferson661/empresa-api
     container_name: empresa-api
     networks:
       - mynetwork
     depends_on:
-      - postgres-empresa
+      - postgres
       - eureka-server
+
   newsletter-api:
     image: jefferson661/newsletter-app
     container_name: newsletter-api
     networks:
       - mynetwork
     depends_on:
-      - postgres-newsletter
+      - postgres
       - eureka-server
       - empresa-api
-  postgres-newsletter:
-    image: postgres
-    container_name: postgres-newsletter
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: senha123
-    ports:
-      - "5434:5432"
-    networks:
-      - mynetwork
+
   servico-api:
     image: jefferson661/servico-app
     container_name: servico-api
     networks:
       - mynetwork
     depends_on:
-      - postgres-servico
+      - postgres
       - eureka-server
-  postgres-servico:
-    image: postgres
-    container_name: postgres-servico
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: senha123
-    ports:
-      - "5436:8089"
-    networks:
-      - mynetwork
-  postgres-prestadora:
-    image: postgres
-    container_name: postgres-prestadora
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: senha123
-    ports:
-      - "5437:5432"
-    networks:
-      - mynetwork
-  postgres-avaliacao:
-    image: postgres
-    container_name: postgres-avaliacao
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: senha123
-    ports:
-      - "5438:5432"
-    networks:
-      - mynetwork
-  postgres-portfolio:
-    image: postgres
-    container_name: postgres-portfolio
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: senha123
-    ports:
-      - "5439:5432"
-    networks:
-      - mynetwork
-  postgres-pergunta:
-    image: postgres
-    container_name: postgres-pergunta
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: senha123
-    ports:
-      - "5440:5432"
-    networks:
-      - mynetwork
-  postgres-meta:
-    image: postgres
-    container_name: postgres-meta
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: senha123
-    ports:
-      - "5441:5432"
-    networks:
-      - mynetwork
+
   meta-api:
     image: jefferson661/meta-api
     container_name: meta-api
     networks:
       - mynetwork
     depends_on:
-      - postgres-meta
+      - postgres
       - eureka-server
+
   interacao-api:
     image: jefferson661/interacao-app
     container_name: interacao-api
     networks:
       - mynetwork
     depends_on:
-      - postgres-interacao
+      - postgres
       - eureka-server
-  postgres-interacao:
-    image: postgres
-    container_name: postgres-interacao
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: senha123
-    ports:
-      - "5442:5432"
-    networks:
-      - mynetwork
+
   questionario-api:
     image: jefferson661/questionario-api
     container_name: questionario-api
     networks:
       - mynetwork
     depends_on:
-      - postgres-pergunta
+      - postgres
       - eureka-server
-
 
 networks:
   mynetwork:
