@@ -20,9 +20,9 @@ local-env-create:
 	docker exec postgressql psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/portfolio.sql
 	docker cp data/pergunta.sql postgressql:/var/lib/postgresql/data
 	docker exec postgressql psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/pergunta.sql
-	docker cp data/meta.sql postgressql:/var/lib/postgressql/data
+	docker cp data/meta.sql postgressql:/var/lib/postgresql/data
 	docker exec postgressql psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/meta.sql
-	docker cp data/interacao.sql postgressql:/var/lib/postgressql/data
+	docker cp data/interacao.sql postgressql:/var/lib/postgresql/data
 	docker exec postgressql psql -h localhost -U admin -d postgres -a -f ./var/lib/postgresql/data/interacao.sql
 
 local-env-destroy:
