@@ -36,6 +36,8 @@ services:
     depends_on:
       - postgres
       - eureka-server
+    ports:
+      - "8082:8082"
 
   servico-api:
     image: jefferson661/servico-app
@@ -56,6 +58,8 @@ services:
     depends_on:
       - postgres
       - eureka-server
+    ports:
+      - "8085:8085"
 
   newsletter-api:
     image: jefferson661/newsletter-app
@@ -95,7 +99,7 @@ services:
       - eureka-server
 
   portfolio-api:
-    image: vitorxp/portfolio-app
+    image: jefferson661/portfolio-app
     container_name: portfolio-api
     networks:
       - mynetwork

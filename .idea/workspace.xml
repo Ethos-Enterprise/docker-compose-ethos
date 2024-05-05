@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="120d1d01-479d-4d42-b97a-2b78c7e9e301" name="Changes" comment="Feat: api questionario">
+    <list default="true" id="120d1d01-479d-4d42-b97a-2b78c7e9e301" name="Changes" comment="Adicionando uma porta para a api de portfolio">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stack.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/stack.yaml" afterDir="false" />
     </list>
@@ -169,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711069609356</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Adicionando uma porta para a api de portfolio">
+      <option name="closed" value="true" />
+      <created>1714793376416</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1714793376416</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +192,7 @@
     <MESSAGE value="Fix: tabela de meta" />
     <MESSAGE value="Feat: api questionario" />
     <MESSAGE value="Feat: api prestadora" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: api prestadora" />
+    <MESSAGE value="Adicionando uma porta para a api de portfolio" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicionando uma porta para a api de portfolio" />
   </component>
 </project>
