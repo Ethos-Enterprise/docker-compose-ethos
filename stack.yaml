@@ -1,3 +1,10 @@
+version: '3.8'
+
+x-environment: &default-environment
+  DB_URL: "jdbc:postgresql://database-1.cx20iggse9kp.us-east-1.rds.amazonaws.com:5432/postgres"
+  DB_USER: "postgres"
+  DB_PASSWORD: "senha123"
+
 services:
   api-gateway:
     image: jefferson661/gateway-app
@@ -36,6 +43,8 @@ services:
     depends_on:
       - postgres
       - eureka-server
+    environment:
+      <<: *default-environment
     ports:
       - "8082:8082"
 
@@ -46,6 +55,8 @@ services:
       - mynetwork
     ports:
       - "8089:8089"
+    environment:
+      <<: *default-environment
     depends_on:
       - postgres
       - eureka-server
@@ -58,6 +69,8 @@ services:
     depends_on:
       - postgres
       - eureka-server
+    environment:
+      <<: *default-environment
     ports:
       - "8085:8085"
 
@@ -66,6 +79,8 @@ services:
     container_name: newsletter-api
     networks:
       - mynetwork
+    environment:
+      <<: *default-environment
     depends_on:
       - postgres
       - eureka-server
@@ -76,6 +91,8 @@ services:
     container_name: meta-api
     networks:
       - mynetwork
+    environment:
+      <<: *default-environment
     depends_on:
       - postgres
       - eureka-server
@@ -85,6 +102,8 @@ services:
     container_name: interacao-api
     networks:
       - mynetwork
+    environment:
+      <<: *default-environment
     depends_on:
       - postgres
       - eureka-server
@@ -94,6 +113,8 @@ services:
     container_name: questionario-api
     networks:
       - mynetwork
+    environment:
+      <<: *default-environment
     depends_on:
       - postgres
       - eureka-server
@@ -106,6 +127,8 @@ services:
     depends_on:
       - postgres
       - eureka-server
+    environment:
+      <<: *default-environment
     ports:
       - "8088:8088"
 
