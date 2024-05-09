@@ -131,7 +131,16 @@ services:
       <<: *default-environment
     ports:
       - "8088:8088"
-
+  autenticacao-jwt:
+    image: jefferson661/autenticacao-jwt
+    container_name: autenticacao-jwt
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres
+      - eureka-server
+    ports:
+      - "8083:8083"
 networks:
   mynetwork:
     external: true
