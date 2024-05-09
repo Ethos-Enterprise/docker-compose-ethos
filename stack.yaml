@@ -107,7 +107,16 @@ services:
     depends_on:
       - postgres
       - eureka-server
-
+  avaliacao-api:
+    image: jefferson661/avaliacao-app
+    container_name: avaliacao-api
+    networks:
+      - mynetwork
+    environment:
+      <<: *default-environment
+    depends_on:
+      - postgres
+      - eureka-server
   questionario-api:
     image: jefferson661/questionario-api
     container_name: questionario-api

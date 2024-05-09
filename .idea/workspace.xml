@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="120d1d01-479d-4d42-b97a-2b78c7e9e301" name="Changes" comment="Adicionando uma porta para a api de portfolio">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stack.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/stack.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
