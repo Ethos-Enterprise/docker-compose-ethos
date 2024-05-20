@@ -1,7 +1,7 @@
 version: '3.8'
 
 x-environment: &default-environment
-  DB_URL: "jdbc:postgresql://database-1.cx20iggse9kp.us-east-1.rds.amazonaws.com:5432/postgres"
+  DB_URL: "jdbc:postgresql://postgres:5432/postgres"
   DB_USER: "postgres"
   DB_PASSWORD: "senha123"
 
