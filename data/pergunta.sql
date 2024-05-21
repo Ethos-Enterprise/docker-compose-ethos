@@ -1,5 +1,14 @@
-CREATE TABLE Pergunta (
+create table questionario(
   id UUID NOT NULL,
+  porcentagem_ambiental INT NULL,
+  porcentagem_social INT NULL,
+  porcentagem_governanca INT NULL,
+  fk_empresa UUID,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Pergunta (
+  id integer NOT NULL,
   titulo VARCHAR(200) NULL,
   alternativaA VARCHAR(100) NULL,
   alternativaB VARCHAR(100) NULL,
@@ -8,15 +17,8 @@ CREATE TABLE Pergunta (
   alternativaE VARCHAR(100) NULL,
   area_esg VARCHAR(45) NULL,
   tema VARCHAR(100) NULL,
-  PRIMARY KEY (id)
-);
-
-create table questionario(
-  id UUID NOT NULL,
-  porcentagem_ambiental INT NULL,
-  porcentagem_social INT NULL,
-  porcentagem_governanca INT NULL,
-  fk_empresa UUID,
+  fk_questionario UUID,
+  foreign key (fk_questionario) references questionario(id),
   PRIMARY KEY (id)
 );
 
