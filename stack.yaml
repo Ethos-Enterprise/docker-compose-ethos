@@ -6,6 +6,11 @@ x-environment: &default-environment
   DB_PASSWORD: "senha123"
 
 services:
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 15
   api-gateway:
     image: jefferson661/gateway-app
     container_name: api-gateway
